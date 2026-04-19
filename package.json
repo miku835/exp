@@ -1,0 +1,7 @@
+{
+  "name": "exp-root",
+  "private": true,
+  "scripts": {
+    "build": "pnpm --prefix Experience-Hub run vercel-build"
+  }
+}
