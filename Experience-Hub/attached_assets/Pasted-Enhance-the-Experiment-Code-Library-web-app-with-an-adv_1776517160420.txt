@@ -1,0 +1,110 @@
+Enhance the "Experiment Code Library" web app with an advanced smart search system.
+
+GOAL:
+Allow users to quickly find experiments using intelligent keyword-based search and subject filtering.
+
+---
+
+1. SEARCH BEHAVIOR:
+
+Implement a smart search system with the following logic:
+
+* If user types a subject name (e.g., "OS", "DBMS", "CN"):
+  → Show only experiments from that subject
+
+* If user types:
+  "exp os" or "experiment os"
+  → First detect "os" as subject
+  → Then show experiments ONLY inside OS
+
+* If user types:
+  "normalization"
+  → Search across ALL subjects and match:
+
+  * title
+  * description
+  * code
+
+* If user types:
+  "dbms normalization"
+  → Filter subject = DBMS
+  → Then search "normalization" inside DBMS only
+
+---
+
+2. SEARCH LOGIC:
+
+* Split user input into keywords
+* Detect if any keyword matches a subject name
+* If subject found:
+  → filter experiments by subject first
+* Then apply keyword search inside filtered results
+
+---
+
+3. MATCHING RULES:
+
+Search should match:
+
+* Title
+* Description
+* Code content
+* Subject name
+
+Search must be:
+
+* Case insensitive
+* Partial matching (e.g., "norm" matches "normalization")
+
+---
+
+4. UI FEATURES:
+
+* Search bar at top (ChatGPT style)
+* Show results instantly (real-time search)
+* Highlight matched keywords
+* Show "No results found" message if empty
+
+---
+
+5. PERFORMANCE:
+
+* Optimize for fast filtering (use JavaScript filtering)
+* Avoid re-fetching data (store experiments in memory)
+
+---
+
+6. BONUS FEATURES:
+
+* Show suggestions while typing
+* Show recent searches
+* Add clear (X) button in search bar
+* Animate results (fade/slide)
+
+---
+
+7. OUTPUT:
+
+Provide:
+
+* JavaScript logic for smart search
+* Integration with existing experiment data
+* Clean UI implementation
+
+---
+
+FINAL RESULT:
+
+Examples:
+
+Input: "os"
+→ Show only OS experiments
+
+Input: "exp os"
+→ Show experiments inside OS
+
+Input: "normalization"
+→ Show matching experiments from all subjects
+
+Input: "dbms normalization"
+→ Show only DBMS experiments related to normalization

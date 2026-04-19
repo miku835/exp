@@ -1,0 +1,25 @@
+# Dependencies
+node_modules
+.pnpm-store
+
+# Build outputs
+**/dist
+**/*.tsbuildinfo
+
+# IDEs
+.vscode
+.idea
+
+# Replit
+.replit
+.cache
+.local
+
+# Logs
+*.log
+api_error.log
+error.log
+
+# System
+.DS_Store
+Thumbs.db

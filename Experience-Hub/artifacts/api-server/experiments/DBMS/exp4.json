@@ -1,0 +1,7 @@
+{
+  "title": "Aggregate Functions",
+  "description": "**Aim:** Implement SQL Queries with Aggregate Function.\n\n**Objective:**\n- To understand the concept of aggregate functions in SQL.\n- To perform calculations on table data using aggregate functions.\n- To analyze grouped data using SQL queries.\n\n**Theory:**\nAggregate functions are used to perform calculations on a set of values (a single column) and return a single value result. They are essential for data analysis and reporting.\n\n**Common Aggregate Functions:**\n1. **COUNT()**: Returns the number of rows.\n2. **SUM()**: Calculates the total value of a column.\n3. **AVG()**: Calculates the average value of a column.\n4. **MAX()**: Returns the maximum value in a column.\n5. **MIN()**: Returns the minimum value in a column.\n\n**Conclusion:** Aggregate functions are useful for summarizing large datasets and performing quantitative analysis. They help in condensing data into meaningful statistics.",
+  "language": "SQL",
+  "code": "-- 1. Count number of records\nSELECT COUNT(*) AS Total_Employees FROM employee;\n\n-- 2. Average value (e.g. score or salary)\nSELECT AVG(score) AS Average_Score FROM employee;\n\n-- 3. Highest value\nSELECT MAX(score) AS Highest_Score FROM employee;\n\n-- 4. Lowest value\nSELECT MIN(score) AS Lowest_Score FROM employee;\n\n-- 5. Total sum of values\nSELECT SUM(score) AS Total_Score FROM employee;",
+  "output": "COUNT(*): 10 \nAVG(score): 82.5\nMAX(score): 98\nMIN(score): 45\nSUM(score): 825"
+}

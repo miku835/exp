@@ -1,0 +1,137 @@
+openapi: 3.1.0
+info:
+  # Do not change the title, if the title changes, the import paths will be broken
+  title: Api
+  version: 0.1.0
+  description: API specification
+servers:
+  - url: /api
+    description: Base API path
+tags:
+  - name: health
+    description: Health operations
+  - name: experiments
+    description: Experiment operations
+paths:
+  /healthz:
+    get:
+      operationId: healthCheck
+      tags: [health]
+      summary: Health check
+      description: Returns server health status
+      responses:
+        "200":
+          description: Healthy
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/HealthStatus"
+  /experiments:
+    get:
+      operationId: listExperiments
+      tags: [experiments]
+      summary: List all experiments
+      description: Scans the experiments folder and returns all experiments grouped by subject
+      responses:
+        "200":
+          description: List of all subjects with their experiments
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ExperimentsResponse"
+  /experiments/{subject}:
+    get:
+      operationId: listExperimentsBySubject
+      tags: [experiments]
+      summary: List experiments by subject
+      description: Returns all experiments for a specific subject
+      parameters:
+        - name: subject
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: List of experiments for the subject
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Experiment"
+        "404":
+          description: Subject not found
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+components:
+  schemas:
+    HealthStatus:
+      type: object
+      properties:
+        status:
+          type: string
+      required:
+        - status
+    Experiment:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Unique identifier (filename without extension)
+        title:
+          type: string
+        description:
+          type: string
+        language:
+          type: string
+        code:
+          type: string
+        output:
+          type: string
+          nullable: true
+          description: Output image filename or text
+        subject:
+          type: string
+      required:
+        - id
+        - title
+        - description
+        - language
+        - code
+        - subject
+    SubjectGroup:
+      type: object
+      properties:
+        subject:
+          type: string
+        experiments:
+          type: array
+          items:
+            $ref: "#/components/schemas/Experiment"
+      required:
+        - subject
+        - experiments
+    ExperimentsResponse:
+      type: object
+      properties:
+        subjects:
+          type: array
+          items:
+            type: string
+        experiments:
+          type: array
+          items:
+            $ref: "#/components/schemas/Experiment"
+      required:
+        - subjects
+        - experiments
+    ErrorResponse:
+      type: object
+      properties:
+        error:
+          type: string
+      required:
+        - error

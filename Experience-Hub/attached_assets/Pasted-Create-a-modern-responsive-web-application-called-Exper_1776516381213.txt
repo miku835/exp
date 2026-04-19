@@ -1,0 +1,150 @@
+Create a modern, responsive web application called "Experiment Code Library" with a ChatGPT-like UI.
+
+MAIN GOAL:
+The admin should NOT use any dashboard. Instead, experiments must be automatically loaded by simply adding JSON files into folders.
+
+---
+
+1. FOLDER-BASED DATA SYSTEM:
+
+Use the following folder structure:
+
+/experiments
+/DBMS
+exp1.json
+exp2.json
+/OS
+/CN
+/Java
+
+Each JSON file represents one experiment.
+
+Example JSON format:
+{
+"title": "Normalization in DBMS",
+"description": "Example experiment",
+"language": "SQL",
+"code": "SELECT * FROM students;",
+"output": "output1.png"
+}
+
+Output images should be stored in:
+/outputs/output1.png
+
+---
+
+2. AUTO LOADING SYSTEM:
+
+The website must automatically:
+
+* Detect all subject folders
+* Read all JSON files inside them
+* Display experiments dynamically
+
+IMPORTANT:
+Since browsers cannot read folders directly, implement ONE of these:
+
+Option A (Preferred):
+
+* Use a Node.js backend (Express)
+* Automatically scan folders using fs module
+* Create API endpoint: /api/experiments
+
+Option B:
+
+* Use a data.json index file listing all experiments
+
+---
+
+3. UI DESIGN (ChatGPT Style):
+
+* Dark theme (black / dark gray background)
+* Sidebar (left):
+
+  * List of subjects (DBMS, OS, CN, etc.)
+* Main content:
+
+  * Experiment cards
+
+Design style:
+
+* Clean and minimal like ChatGPT
+* Indigo / purple gradient accents
+* Glassmorphism cards (blur + transparency)
+* Smooth animations
+
+---
+
+4. EXPERIMENT DISPLAY:
+
+Each experiment should show:
+
+* Title
+* Description
+* Code block
+* Copy button (top-right like ChatGPT)
+* Language label (SQL, Java, etc.)
+* Output section:
+
+  * Image OR text
+
+---
+
+5. CODE BLOCK FEATURES:
+
+* Dark background
+* Monospace font
+* Syntax highlighting
+* Copy button using clipboard API
+* Smooth hover effect
+
+---
+
+6. FUNCTIONALITY:
+
+* Click subject → filter experiments
+* Search bar → search by title or subject
+* Responsive design (mobile + desktop)
+* Smooth transitions
+
+---
+
+7. BACKEND (Node.js REQUIRED):
+
+Create:
+
+* Express server
+* API to scan folders:
+  /experiments/{subject}/*.json
+* Return structured JSON data
+
+---
+
+8. OUTPUT:
+
+Generate complete working project:
+
+* index.html
+* style.css
+* script.js
+* server.js
+* Proper folder structure
+
+Code must be clean, well-commented, and ready to run.
+
+---
+
+9. BONUS (if possible):
+
+* Syntax highlighting using Prism.js or highlight.js
+* Copy success animation (like "Copied!")
+* Loading animation
+* Scroll animations
+
+---
+
+FINAL RESULT:
+When I add a new file like:
+/experiments/DBMS/exp3.json
+
+It should automatically appear on the website without changing any code.
