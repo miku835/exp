@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "build": "pnpm run vercel-build",
+  "buildCommand": "pnpm run vercel-build",
   "outputDirectory": "artifacts/experiment-library/dist/public",
   "rewrites": [
     {
