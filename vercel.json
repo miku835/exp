@@ -1,7 +1,7 @@
 {
   "version": 2,
-  "buildCommand": "pnpm --prefix Experience-Hub run vercel-build",
-  "outputDirectory": "Experience-Hub/artifacts/experiment-library/dist/public",
+  "build": "pnpm run vercel-build",
+  "outputDirectory": "artifacts/experiment-library/dist/public",
   "rewrites": [
     {
       "source": "/api/(.*)",
@@ -14,7 +14,7 @@
   ],
   "functions": {
     "api/index.ts": {
-      "includeFiles": "Experience-Hub/artifacts/api-server/experiments/**, Experience-Hub/artifacts/api-server/outputs/**"
+      "includeFiles": "artifacts/api-server/experiments/**, artifacts/api-server/outputs/**"
     }
   }
 }
